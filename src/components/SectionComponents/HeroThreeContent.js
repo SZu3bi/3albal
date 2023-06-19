@@ -34,11 +34,11 @@ const HeroThreeContent = (props) => {
     borderRadius: '50%'}}/>
       </div>
       <div className={classes.dish_text_div}>
-        <p>{props.name}</p>
+        <p>{props.name}</p><p className="my-auto">{price}</p>        <HeroThreeForm onAddToCart={onAddToCartHandler} />
+
       </div>
       <div className={classes.dish_price_div}>
-        <p className="my-auto">{price}</p>
-        <HeroThreeForm onAddToCart={onAddToCartHandler} />
+        {/* <p className="my-auto">{price}</p> */}
       </div>
     </div>
   );

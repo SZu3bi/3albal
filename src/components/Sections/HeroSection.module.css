@@ -85,7 +85,7 @@
 
 @media only screen and (max-width: 576px) {
   .text__div {
-    padding: 0 2% 0 2%;
+    padding: 0 2% 0 8%;
   }
 
   .text__div h1 {
@@ -100,3 +100,5 @@
     display: block;
   }
 }
+
+

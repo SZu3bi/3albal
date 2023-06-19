@@ -66,7 +66,8 @@ const HeroThreeForm = (props) => {
     <>
       <Tooltip className={tipShow} />
       <form onSubmit={onSubmitHandler}>
-        <Input
+     <div>
+     <Input
           ref={inputRef}
           input={{
             id: Math.random() * 10,
@@ -83,6 +84,8 @@ const HeroThreeForm = (props) => {
         {!amountIsValid && (
           <p>Input is invalid, Pleae Input a amount between 1 and 5</p>
         )}
+         
+        </div>
       </form>
     </>
   );

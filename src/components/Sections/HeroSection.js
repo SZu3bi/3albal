@@ -6,13 +6,16 @@ import { Link } from "react-scroll";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FoodImage from "../../assets/image/FoodImage.webp";
 import FoodImage2 from "../../assets/image/food1.png";
+import Logo2 from "../../assets/image/3albal.jpg";
 
 const HeroSection = () => {
   //Rendering the Hero section(Landing page) on the DOM
   return (
     <section id="hero">
       <Container>
+        
         <Row className={`${classes.row} mx-auto`}>
+          
           <Col
             lg={6}
             className="p-0"
@@ -21,6 +24,11 @@ const HeroSection = () => {
             data-aos-duration="1500"
           >
             <div className={classes.text__div}>
+
+            <img className="box" src={Logo2} alt="My logo" style={{    width: '268px',
+    borderRadius: '17px' ,     boxShadow: '17px -2px 25px 11px #a5dc86, 5px 2px 20px 3px #ffc107, -11px -2px 20px 0px #dc3545'}}></img>
+    <br/>
+    <br/>
               <h1>
                 Enjoy <span>3al Bal Shawrma meals</span> 
               </h1>

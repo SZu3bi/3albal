@@ -38,9 +38,6 @@ const Cart = (props) => {
 
   //Revceiving values via props and mapping it using useContext
 
-
- 
-
   var cartItems = cartCtx.items.map((item) => (
     <CartItem
       name={item.name}
@@ -53,30 +50,30 @@ const Cart = (props) => {
     />
   ));
 
-  const getCurrentLocation =() => {
+  const getCurrentLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-       var latitude = position.coords.latitude;
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
-        setLatitude(latitude)
-        setlongitude(longitude)
+        setLatitude(latitude);
+        setlongitude(longitude);
         console.log("Latitude: " + latitude + ", Longitude: " + longitude);
-        console.log(Latitude  , longitudes);
+        console.log(Latitude, longitudes);
         // You can use the latitude and longitude variables as needed
       });
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
-  }
-  const handleClick = () => {
-    window.location.href = `https://api.whatsapp.com/send/?phone= $962777408409&text=Meals : ${cartCtx.items.map((item) => (item.name))} + Total = ${totalAmount} +  \n\r My%20current%20location%3A%20%0A%0Ahttps%3A%2F%2Fmaps.google.com%2F%3Fq%3D${Latitude}%2C${longitudes}`;
-    
   };
-
+  const handleClick = () => {
+    window.location.href = `https://api.whatsapp.com/send/?phone= $962777408409&text=Meals : ${cartCtx.items.map(
+      (item) => item.name
+    )} + Total = ${totalAmount} +  \n\r My%20current%20location%3A%20%0A%0Ahttps%3A%2F%2Fmaps.google.com%2F%3Fq%3D${Latitude}%2C${longitudes}`;
+  };
 
   useEffect(() => {
     getCurrentLocation();
-}, [Latitude,longitudes]);
+  }, [Latitude, longitudes]);
 
   //ENDS
 
@@ -89,7 +86,6 @@ const Cart = (props) => {
         <div className={`${classes.amount} `}>
           <p>Total Amount</p>
           <p>{totalAmount}</p>
-         
         </div>
         <div className={classes.buttons}>
           <TheButton
