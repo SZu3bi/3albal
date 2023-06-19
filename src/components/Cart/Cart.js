@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CartItem from "./CartItem";
 import Modal from "../Ui/Modal";
 import TheButton from "../Ui/TheButton";
@@ -33,6 +33,8 @@ const Cart = (props) => {
   };
 
   //ENDS
+  const [Latitude, setLatitude] = useState(null);
+  const [longitudes, setlongitude] = useState(null);
 
   //Revceiving values via props and mapping it using useContext
 
@@ -51,11 +53,30 @@ const Cart = (props) => {
     />
   ));
 
-
+  const getCurrentLocation =() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+       var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        setLatitude(latitude)
+        setlongitude(longitude)
+        console.log("Latitude: " + latitude + ", Longitude: " + longitude);
+        console.log(Latitude  , longitudes);
+        // You can use the latitude and longitude variables as needed
+      });
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }
   const handleClick = () => {
-    window.location.href = `https://api.whatsapp.com/send/?phone= $962777408409&text=Meals : ${cartCtx.items.map((item) => (item.name))} + Total=${totalAmount}`;
+    window.location.href = `https://api.whatsapp.com/send/?phone= $962777408409&text=Meals : ${cartCtx.items.map((item) => (item.name))} + Total = ${totalAmount} +  \n\r My%20current%20location%3A%20%0A%0Ahttps%3A%2F%2Fmaps.google.com%2F%3Fq%3D${Latitude}%2C${longitudes}`;
     
   };
+
+
+  useEffect(() => {
+    getCurrentLocation();
+}, [Latitude,longitudes]);
 
   //ENDS
 
@@ -65,7 +86,6 @@ const Cart = (props) => {
     <Modal onCloseCart={props.onCloseCart}>
       <div className={classes.items}>
         <div className={classes.item_group}>{cartItems}</div>
-
         <div className={`${classes.amount} `}>
           <p>Total Amount</p>
           <p>{totalAmount}</p>
